@@ -1,11 +1,11 @@
-service: foodblogAWS
+service: food-blog-aws
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
-  region: us-east-1
+  region: us-east-2
   memorySize: 128
-function:
+functions:
   app:
     handler: serverlessFoodblogRoutes/serverlessFoodblogRoutes.handler
     events:
@@ -14,4 +14,6 @@ function:
           method: ANY
           cors: true
       - http:
-        path: /{proxy+}
+          path: /{proxy+}
+          method: ANY
+          cors: true
